@@ -1,0 +1,66 @@
+
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if flag %}
+    <img id="loading-gif" src="{% static 'images/google-voice-effect.gif' %}" alt="Loading" width="500" height="360" class="video">  
+    <img id="main-image" style="display: none;"   src="{% url 'videofeed' %}" alt="" width="500" height="360" class="video"> 
+{% else %}
+  <video width="640" height="360" controls autoplay muted class="video">
+    <source src="{% static 'images/video.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+{% endif %}
+
+
+
+
+{% if flag == 1 %}
+<a href="{% url 'detect' %}?flag=0" data-page={{flag}} style="text-decoration: none;"><button class="start_button" >End Video</button></a>
+{% else %}
+<a href="{% url 'detect' %}?flag=1" data-page={{flag}} style="text-decoration: none;"><button class="start_button" >Start Video</button></a>
+{% endif %}
+<p data-page="{{flag}}" class="indicator" hidden>{{flag}}</p>
+<div class="warning-wrapper" style="width:30vw; height:700px" class="bar">
+<canvas id="warningChart" width="300px" height="300px"></canvas>
+</div>
+
+
+
+  
+    <button class="chatbot-toggler" >
+      <span class="material-symbols-rounded">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+      <header>
+        <h2>Chatbot</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>"It's look like you are falling a sleep, How can i help you!"</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea placeholder="Wait..." spellcheck="false" required class="wait" ></textarea>
+        <!-- <img src="{% static 'images/google-voice-effect.gif' %}" alt="" width="100px"> -->
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+      </div>
+    </div>
+    <div class="mychart-wrapper" style="width:100vw; height:500px">
+      <canvas id="myChart" width="" height=""></canvas>
+  </div>
+
+<!-- Include Chart.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+<script src="{% static 'js/detect_script.js' %}"></script>
+
+<!-- <script src="{% static 'js/script.js' %}"></script> -->
+ 
+{% endblock content %}
+    

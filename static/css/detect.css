@@ -1,0 +1,24 @@
+.start_button{
+    display:block;
+    width:100px;
+    height:40px;
+    color:red;
+    margin-left:264px;
+    margin-top:20px;
+    text-decoration: none;
+    background-color: #724ae8;
+    color:white;
+    border-radius: 10px;
+}
+
+.video{
+    margin-top: 38px;
+}
+
+.warning-wrapper{
+    position: absolute;
+    left:34%;
+    top:1%;
+    /* width:500px !important; */
+    /* height:450px !important; */
+}
